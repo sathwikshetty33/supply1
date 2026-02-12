@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { BarChart3, Package, DollarSign, Mic, Bell, Shield, ShoppingCart } from 'lucide-react'
 
 function useScrollAnimation() {
     const ref = useRef(null)
@@ -34,12 +35,12 @@ function Counter({ end, suffix = '' }) {
 }
 
 const features = [
-    { icon: '📊', title: 'Demand Forecasting', desc: 'AI predicts what your customers want before they walk in — seasonal, festival, and trend-driven demand modeling.' },
-    { icon: '📦', title: 'Stock Optimization', desc: 'Never overstock or run out. Smart inventory that auto-adjusts based on predicted demand and supply conditions.' },
-    { icon: '💰', title: 'Dynamic Pricing', desc: 'AI-suggested pricing that maximizes margins while staying competitive. Factor in supply, demand, and wastage.' },
-    { icon: '🎙️', title: 'Voice Operations', desc: 'Manage your store by voice. Check stock, reorder supplies, get insights — hands-free, in your language.' },
-    { icon: '🔔', title: 'Consumer Alerts', desc: 'Alert nearby consumers about deals, fresh arrivals, and availability. Build loyalty with timely multilingual notifications.' },
-    { icon: '🛡️', title: 'Supply Risk Shield', desc: 'Get early warnings when supply disruptions are heading your way. Pre-order, switch suppliers, or buffer stock.' },
+    { icon: BarChart3, title: 'Demand Forecasting', desc: 'AI predicts what your customers want before they walk in — seasonal, festival, and trend-driven demand modeling.' },
+    { icon: Package, title: 'Stock Optimization', desc: 'Never overstock or run out. Smart inventory that auto-adjusts based on predicted demand and supply conditions.' },
+    { icon: DollarSign, title: 'Dynamic Pricing', desc: 'AI-suggested pricing that maximizes margins while staying competitive. Factor in supply, demand, and wastage.' },
+    { icon: Mic, title: 'Voice Operations', desc: 'Manage your store by voice. Check stock, reorder supplies, get insights — hands-free, in your language.' },
+    { icon: Bell, title: 'Consumer Alerts', desc: 'Alert nearby consumers about deals, fresh arrivals, and availability. Build loyalty with timely multilingual notifications.' },
+    { icon: Shield, title: 'Supply Risk Shield', desc: 'Get early warnings when supply disruptions are heading your way. Pre-order, switch suppliers, or buffer stock.' },
 ]
 
 const metrics = [
@@ -64,7 +65,7 @@ export default function RetailerLandingPage() {
             {/* NAV */}
             <nav className="relative z-50 flex items-center justify-between px-6 sm:px-10 py-5 max-w-7xl mx-auto">
                 <Link to="/" className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center text-sm font-bold shadow-lg shadow-teal-500/20">🛒</div>
+                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center text-sm font-bold shadow-lg shadow-teal-500/20"><ShoppingCart className="w-5 h-5 text-black" /></div>
                     <span className="text-lg font-semibold tracking-tight">FoodChain <span className="text-teal-400">Retail</span></span>
                 </Link>
                 <div className="hidden md:flex items-center gap-8 text-sm text-white/50">
@@ -129,8 +130,8 @@ export default function RetailerLandingPage() {
                                 </div>
                             </div>
                             {/* Floating badges */}
-                            <div className="absolute -top-4 -right-4 px-3 py-2 rounded-xl bg-[#111]/90 border border-teal-500/20 backdrop-blur-lg text-xs shadow-lg" style={{ animation: 'float 5s ease-in-out infinite' }}>📦 Low stock: Onions</div>
-                            <div className="absolute -bottom-4 -left-4 px-3 py-2 rounded-xl bg-[#111]/90 border border-cyan-500/20 backdrop-blur-lg text-xs shadow-lg" style={{ animation: 'float 7s ease-in-out infinite 2s' }}>🎙️ "Reorder tomatoes"</div>
+                            <div className="absolute -top-4 -right-4 px-3 py-2 rounded-xl bg-[#111]/90 border border-teal-500/20 backdrop-blur-lg text-xs shadow-lg flex items-center gap-2" style={{ animation: 'float 5s ease-in-out infinite' }}><Package className="w-3 h-3 text-teal-400" /> Low stock: Onions</div>
+                            <div className="absolute -bottom-4 -left-4 px-3 py-2 rounded-xl bg-[#111]/90 border border-cyan-500/20 backdrop-blur-lg text-xs shadow-lg flex items-center gap-2" style={{ animation: 'float 7s ease-in-out infinite 2s' }}><Mic className="w-3 h-3 text-cyan-400" /> "Reorder tomatoes"</div>
                         </div>
                     </div>
                 </div>
@@ -144,7 +145,7 @@ export default function RetailerLandingPage() {
                         {features.map((f, i) => (
                             <FadeIn key={i} delay={i * 80}>
                                 <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 hover:bg-teal-500/[0.03] hover:border-teal-500/20 transition-all duration-500 hover:-translate-y-1">
-                                    <div className="text-4xl mb-5">{f.icon}</div>
+                                    <div className="mb-5"><f.icon className="w-10 h-10 text-teal-400" /></div>
                                     <h3 className="text-xl font-bold mb-2 tracking-tight">{f.title}</h3>
                                     <p className="text-white/40 text-sm leading-relaxed">{f.desc}</p>
                                 </div>
