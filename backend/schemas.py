@@ -93,7 +93,7 @@ class RetailerMandiOrderCreate(BaseModel):
     start_time: Optional[datetime] = None
     price_per_kg: Optional[float] = None
     order_date: Optional[datetime] = None
-
+    quantity: Optional[float] = None
 
 class RetailerMandiOrderUpdate(BaseModel):
     src_lat: Optional[float] = None
@@ -104,7 +104,7 @@ class RetailerMandiOrderUpdate(BaseModel):
     start_time: Optional[datetime] = None
     price_per_kg: Optional[float] = None
     order_date: Optional[datetime] = None
-
+    quantity: Optional[float] = None
 
 class RetailerMandiOrderResponse(BaseModel):
     id: int
@@ -116,7 +116,7 @@ class RetailerMandiOrderResponse(BaseModel):
     start_time: Optional[datetime]
     price_per_kg: Optional[float]
     order_date: Optional[datetime]
-
+    quantity: Optional[float]
     class Config:
         from_attributes = True
 
@@ -170,7 +170,7 @@ class MandiFarmerOrderCreate(BaseModel):
     start_time: Optional[datetime] = None
     price_per_kg: Optional[float] = None
     order_date: Optional[datetime] = None
-
+    quantity: Optional[float] = None
 
 class MandiFarmerOrderUpdate(BaseModel):
     src_lat: Optional[float] = None
@@ -181,7 +181,7 @@ class MandiFarmerOrderUpdate(BaseModel):
     start_time: Optional[datetime] = None
     price_per_kg: Optional[float] = None
     order_date: Optional[datetime] = None
-
+    quantity: Optional[float] = None
 
 class MandiFarmerOrderResponse(BaseModel):
     id: int
@@ -193,7 +193,7 @@ class MandiFarmerOrderResponse(BaseModel):
     start_time: Optional[datetime]
     price_per_kg: Optional[float]
     order_date: Optional[datetime]
-
+    quantity: Optional[float]
     class Config:
         from_attributes = True
 
