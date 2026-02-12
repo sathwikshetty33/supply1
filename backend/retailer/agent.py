@@ -22,7 +22,6 @@ from sqlalchemy import func as sa_func
 
 from langchain.agents import create_agent
 from langchain_core.tools import tool
-from langchain_community.tools.tavily_search import TavilySearchResults
 
 from database import SessionLocal
 from models import RetailerMandiOrder, Retailer, User, Alert
@@ -30,12 +29,6 @@ from models import RetailerMandiOrder, Retailer, User, Alert
 load_dotenv()
 
 logger = logging.getLogger("demand_agent")
-
-# ── Tavily search tool ──────────────────────────────────────────────────────
-tavily_search = TavilySearchResults(
-    max_results=5,
-    api_key=os.getenv("TAVILY_API_KEY"),
-)
 
 
 # ── Custom DB tools ─────────────────────────────────────────────────────────
@@ -188,6 +181,13 @@ INSTRUCTIONS:
 # ── Build & run ──────────────────────────────────────────────────────────────
 def run_demand_agent() -> str:
     """Build the agent, invoke it, return the final answer string."""
+    from langchain_community.tools.tavily_search import TavilySearchResults
+
+    tavily_search = TavilySearchResults(
+        max_results=5,
+        api_key=os.getenv("TAVILY_API_KEY"),
+    )
+
     tools = [
         get_past_week_sales,
         get_retailer_locations,
