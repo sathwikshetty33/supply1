@@ -18,6 +18,7 @@ from farmer.routes import router as farmer_router
 from retailer.agent import run_demand_agent
 from mandi.routes import router as mandi_router
 from mandi.agent import run_mandi_agent
+from farmer.agent import run_farmer_agent
 
 logger = logging.getLogger("server")
 
@@ -40,6 +41,13 @@ def _scheduled_agent_job():
         logger.info(f"Mandi agent finished: {result[:200]}")
     except Exception as e:
         logger.error(f"Mandi agent failed: {e}", exc_info=True)
+
+    logger.info("⏰ Cron triggered: running farmer agent...")
+    try:
+        result = run_farmer_agent()
+        logger.info(f"Farmer agent finished: {result[:200]}")
+    except Exception as e:
+        logger.error(f"Farmer agent failed: {e}", exc_info=True)
 
 
 @asynccontextmanager
@@ -214,6 +222,16 @@ def trigger_mandi_agent_manually():
     """Manually trigger the mandi supply-chain agent (for testing)."""
     try:
         result = run_mandi_agent()
+        return {"status": "success", "result": result}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Agent error: {str(e)}")
+
+
+@app.post("/api/agent/farmer/run", tags=["Agent"])
+def trigger_farmer_agent_manually():
+    """Manually trigger the farmer advisory agent (for testing)."""
+    try:
+        result = run_farmer_agent()
         return {"status": "success", "result": result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Agent error: {str(e)}")
