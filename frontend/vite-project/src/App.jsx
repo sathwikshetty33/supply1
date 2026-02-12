@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage.jsx'
-import Login from './pages/Login.jsx'
-import Register from './pages/Register.jsx'
+import Auth from './pages/Auth.jsx'
 import FarmerLandingPage from './pages/FarmerLandingPage.jsx'
 import FarmerDashboard from './pages/FarmerDashboard.jsx'
 import MandiLandingPage from './pages/MandiLandingPage.jsx'
@@ -11,8 +10,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Auth />} />
+      <Route path="/register" element={<Auth />} />
       <Route path="/farmer" element={<FarmerLandingPage />} />
       <Route path="/farmer/dashboard" element={<FarmerDashboard />} />
       <Route path="/mandi" element={<MandiLandingPage />} />
