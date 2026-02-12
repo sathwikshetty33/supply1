@@ -67,7 +67,8 @@ def register(user_data: UserRegister, db: Session = Depends(get_db)):
         password_hash=hashed_password,
         role=user_data.role,
         contact=user_data.contact,
-        location=user_data.location
+        latitude=user_data.latitude,
+        longitude=user_data.longitude
     )
     
     db.add(new_user)

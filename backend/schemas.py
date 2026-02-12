@@ -7,7 +7,8 @@ class UserRegister(BaseModel):
     password: str = Field(..., min_length=6)
     role: str = Field(..., pattern="^(farmer|mandi_owner|retailer|admin)$")
     contact: Optional[str] = Field(None, max_length=20)
-    location: Optional[str] = Field(None, max_length=150)
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
     language: Optional[str] = Field(None, max_length=50)
     
     @validator('role')
@@ -33,7 +34,8 @@ class UserResponse(BaseModel):
     username: str
     role: str
     contact: Optional[str]
-    location: Optional[str]
+    latitude: Optional[float]
+    longitude: Optional[float]
     
     class Config:
         from_attributes = True
@@ -42,7 +44,8 @@ class UserResponse(BaseModel):
 # ── Retailer Profile ────────────────────────────────────────────────────────
 class RetailerProfileUpdate(BaseModel):
     contact: Optional[str] = Field(None, max_length=20)
-    location: Optional[str] = Field(None, max_length=150)
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
     language: Optional[str] = Field(None, max_length=50)
 
 

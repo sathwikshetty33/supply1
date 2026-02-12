@@ -49,8 +49,10 @@ def update_profile(
     # Update user-level fields
     if payload.contact is not None:
         current_user.contact = payload.contact
-    if payload.location is not None:
-        current_user.location = payload.location
+    if payload.latitude is not None:
+        current_user.latitude = payload.latitude
+    if payload.longitude is not None:
+        current_user.longitude = payload.longitude
 
     # Update retailer-level fields
     if payload.language is not None:

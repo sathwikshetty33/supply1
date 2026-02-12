@@ -11,7 +11,8 @@ class User(Base):
     password_hash = Column(String(255), nullable=False)
     role = Column(String(50), nullable=False)
     contact = Column(String(20))
-    location = Column(String(150))
+    latitude = Column(Numeric(10, 7))
+    longitude = Column(Numeric(10, 7))
     
     __table_args__ = (
         CheckConstraint("role IN ('farmer', 'mandi_owner', 'retailer', 'admin')", name='check_user_role'),
