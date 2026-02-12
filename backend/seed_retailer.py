@@ -11,25 +11,6 @@ import random
 
 BASE_URL = "http://localhost:8001"
 
-# ── 1. Register a retailer ──────────────────────────────────────────────────
-print("=== Registering retailer ===")
-register_resp = requests.post(f"{BASE_URL}/api/register", json={
-    "username": "ritvik1",
-    "password": "12345678",
-    "role": "retailer",
-    "contact": "+919876500001",
-    "latitude": 12.9716,
-    "longitude": 77.5946,
-    "language": "Kannada",
-})
-
-if register_resp.status_code == 201:
-    print(f"✅ Registered: {register_resp.json()}")
-elif "already registered" in register_resp.text.lower():
-    print("ℹ️  User already exists, skipping registration.")
-else:
-    print(f"❌ Registration failed: {register_resp.text}")
-
 # ── 2. Login to get JWT ─────────────────────────────────────────────────────
 print("\n=== Logging in ===")
 login_resp = requests.post(f"{BASE_URL}/api/login", json={
@@ -94,8 +75,8 @@ while current_date <= TODAY:
         orders_to_create.append({
             "src_lat": round(random.uniform(12.0, 14.0), 4),
             "src_long": round(random.uniform(76.0, 78.0), 4),
-            "dest_lat": round(random.uniform(12.0, 14.0), 4),
-            "dest_long": round(random.uniform(76.0, 78.0), 4),
+            "dest_lat": "14.2456789",
+            "dest_long": "13.124567",
             "item": item,
             "start_time": (current_date + timedelta(hours=random.randint(5, 18), minutes=random.randint(0, 59))).isoformat(),
             "price_per_kg": round(random.uniform(low, high), 2),

@@ -86,7 +86,7 @@ class MandiFarmerOrder(Base):
     start_time = Column(TIMESTAMP)
     price_per_kg = Column(Numeric(10, 2))
     order_date = Column(Date)
-
+    quantity = Column(Numeric(10, 2))
 
 class Retailer(Base):
     __tablename__ = "retailer"
@@ -125,7 +125,7 @@ class RetailerMandiOrder(Base):
     start_time = Column(TIMESTAMP)
     price_per_kg = Column(Numeric(10, 2))
     order_date = Column(Date)
-
+    quantity = Column(Numeric(10, 2))
 
 class Alert(Base):
     __tablename__ = "alerts"

@@ -208,10 +208,13 @@ def health_check():
 
 
 @app.post("/api/agent/run", tags=["Agent"])
-def trigger_agent_manually():
-    """Manually trigger the demand-alert agent (for testing)."""
+def trigger_agent_manually(user_id: Optional[int] = None):
+    """
+    Manually trigger the demand-alert agent (for testing).
+    Optional query param: ?user_id=123 to run for specific retailer.
+    """
     try:
-        result = run_demand_agent()
+        result = run_demand_agent(target_user_id=user_id)
         return {"status": "success", "result": result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Agent error: {str(e)}")
