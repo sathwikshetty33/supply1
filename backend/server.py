@@ -5,7 +5,8 @@ from datetime import timedelta
 from typing import Optional
 
 from database import get_db, init_db, engine
-from models import User, Farmer, MandiOwner, Retailer, Base
+from models import User, Farmer, MandiOwner, Retailer, RetailerItem, RetailerMandiOrder, Base
+from retailer_routes import router as retailer_router
 from schemas import UserRegister, UserLogin, Token, UserResponse
 from auth import verify_password, get_password_hash, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
 from farmer.routes import router as farmer_router
@@ -21,12 +22,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize database tables on startup
-@app.on_event("startup")
-def startup_event():
-    print("Creating database tables...")
-    Base.metadata.create_all(bind=engine)
-    print("Database tables created successfully!")
+# # Initialize database tables on startup
+# @app.on_event("startup")
+# def startup_event():
+#     print("Creating database tables...")
+#     Base.metadata.create_all(bind=engine)
+#     print("Database tables created successfully!")
 
 # Include farmer routes
 app.include_router(farmer_router, prefix="/api/farmer")
@@ -138,6 +139,9 @@ def login(user_credentials: UserLogin, db: Session = Depends(get_db)):
         "username": user.username,
         "user_id": user.id
     }
+
+# Register retailer routes
+app.include_router(retailer_router)
 
 @app.get("/api/health")
 def health_check():

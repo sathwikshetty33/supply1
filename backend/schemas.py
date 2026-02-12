@@ -37,3 +37,76 @@ class UserResponse(BaseModel):
     
     class Config:
         from_attributes = True
+
+
+# ── Retailer Profile ────────────────────────────────────────────────────────
+class RetailerProfileUpdate(BaseModel):
+    contact: Optional[str] = Field(None, max_length=20)
+    location: Optional[str] = Field(None, max_length=150)
+    language: Optional[str] = Field(None, max_length=50)
+
+
+class RetailerProfileResponse(BaseModel):
+    id: int
+    user_id: int
+    language: Optional[str]
+    user: Optional[UserResponse] = None
+
+    class Config:
+        from_attributes = True
+
+
+# ── Retailer Items ──────────────────────────────────────────────────────────
+class RetailerItemCreate(BaseModel):
+    name: str = Field(..., max_length=100)
+    item: str = Field(..., max_length=100)
+    quantity: Optional[float] = None
+
+
+class RetailerItemUpdate(BaseModel):
+    name: Optional[str] = Field(None, max_length=100)
+    item: Optional[str] = Field(None, max_length=100)
+    quantity: Optional[float] = None
+
+
+class RetailerItemResponse(BaseModel):
+    id: int
+    retailer_id: int
+    name: Optional[str]
+    item: Optional[str]
+    quantity: Optional[float]
+
+    class Config:
+        from_attributes = True
+
+
+# ── Retailer ↔ Mandi Orders ────────────────────────────────────────────────
+class RetailerMandiOrderCreate(BaseModel):
+    source: Optional[str] = Field(None, max_length=150)
+    destination: Optional[str] = Field(None, max_length=150)
+    item: Optional[str] = Field(None, max_length=100)
+    start_time: Optional[datetime] = None
+    price_per_kg: Optional[float] = None
+    order_date: Optional[datetime] = None
+
+
+class RetailerMandiOrderUpdate(BaseModel):
+    source: Optional[str] = Field(None, max_length=150)
+    destination: Optional[str] = Field(None, max_length=150)
+    item: Optional[str] = Field(None, max_length=100)
+    start_time: Optional[datetime] = None
+    price_per_kg: Optional[float] = None
+    order_date: Optional[datetime] = None
+
+
+class RetailerMandiOrderResponse(BaseModel):
+    id: int
+    source: Optional[str]
+    destination: Optional[str]
+    item: Optional[str]
+    start_time: Optional[datetime]
+    price_per_kg: Optional[float]
+    order_date: Optional[datetime]
+
+    class Config:
+        from_attributes = True
