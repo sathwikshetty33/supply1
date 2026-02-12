@@ -93,3 +93,78 @@ body {
     transform: rotate(0deg) translateX(80px) rotate(0deg);
   }
 }
+
+/* ===== DASHBOARD STYLES ===== */
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Leaflet dark theme overrides */
+.leaflet-container {
+  background: #0a0a0a !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #111 !important;
+  color: #ccc !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.leaflet-popup-tip {
+  background: #111 !important;
+}
+
+.leaflet-popup-close-button {
+  color: #999 !important;
+}
+
+.custom-icon {
+  background: none !important;
+  border: none !important;
+}
+
+/* Google Translate widget styling */
+.goog-te-gadget {
+  font-size: 0 !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #ccc !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  padding: 4px 8px !important;
+  font-size: 11px !important;
+  outline: none !important;
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+/* Select dropdown dark mode */
+select option {
+  background: #111;
+  color: #ccc;
+}

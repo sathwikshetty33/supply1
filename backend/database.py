@@ -6,11 +6,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/supply_chain_db")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = create_engine(DATABASE_URL)
+# Create engine
+engine = create_engine(
+    DATABASE_URL,
+    connect_args={"sslmode": "require"},  # ensure SSL, no cert files
+)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 Base = declarative_base()
 
 def get_db():
@@ -21,6 +25,5 @@ def get_db():
         db.close()
 
 def init_db():
-    """Initialize database tables"""
-    from models import Base
-    Base.metadata.create_all(bind=engine)
+    from models import Base as ModelsBase
+    ModelsBase.metadata.create_all(bind=engine)
