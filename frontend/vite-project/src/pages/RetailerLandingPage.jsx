@@ -99,7 +99,9 @@ export default function RetailerLandingPage() {
                                 Optimize My Store
                                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                             </button>
-                            <button className="px-8 py-4 rounded-full border border-white/10 text-white/70 font-medium hover:bg-white/5 transition-all">See Demo</button>
+                            <Link to="/retailer/orders">
+                                <button className="px-8 py-4 rounded-full border border-teal-500/30 text-teal-400 font-medium hover:bg-teal-500/10 hover:border-teal-500/50 transition-all">View Orders Dashboard</button>
+                            </Link>
                         </div>
                     </div>
 
